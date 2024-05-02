@@ -5,7 +5,7 @@
 #define CIRCLE_COUNT 1024
 
 #define xoff GetScreenWidth()/2
-#define yoff 250
+#define yoff 275    
 
 typedef struct {
     Vector2 pos;
@@ -66,7 +66,7 @@ int main(void){
         point2.x = point1.x + sinf(a2) * r2;
         point2.y = point1.y + cosf(a2) * r2;
 
-        Circles[frameCounter] = (Circle) {.pos = point2, .color = ColorContrast(ColorFromHSV(GetTime(),0.4f,point2.y/(GetScreenHeight()-50)), GetTime())};
+        Circles[frameCounter] = (Circle) {.pos = point2, .color = ColorContrast(ColorFromHSV(GetTime()*2,0.4f,((point2.y)/(GetScreenHeight()+25))), GetTime())};
 
 
         BeginDrawing();
@@ -91,5 +91,6 @@ int main(void){
         a2 += a2_v;
         frameCounter = ((frameCounter += 1) % CIRCLE_COUNT);
     }
+    CloseWindow();
     return 0;
 }
